@@ -30956,14 +30956,14 @@ DUK_INTERNAL duk_double_t duk_bi_date_get_now_windows(void) {
 
 #if defined(DUK_USE_DATE_NOW_WINDOWS_SUBMS)
 DUK_INTERNAL duk_double_t duk_bi_date_get_now_windows_subms(void) {
-	/* Variant of the basic algorithm using GetSystemTimePreciseAsFileTime()
+	/* Variant of the basic algorithm using GetSystemTimeAsFileTime()
 	 * for more accuracy.
 	 */
 	FILETIME ft1;
 	SYSTEMTIME st2;
 	ULARGE_INTEGER tmp1, tmp2;
 
-	GetSystemTimePreciseAsFileTime(&ft1);
+	GetSystemTimeAsFileTime(&ft1);
 	duk__convert_filetime_to_ularge((const FILETIME *) &ft1, &tmp1);
 
 	duk__set_systime_jan1970(&st2);
